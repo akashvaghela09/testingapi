@@ -24,7 +24,7 @@ const Movie = mongoose.model("movie", movieSchema);
 // get all movies
 app.get("/movies", async (req, res) => {
     try {
-        const movies = await Movie.find().lean().exec();
+        const movies = await Movie.find()
         return res.status(200).json({data: movies})
     } catch (err) {
         return res.status(500).json({message: err.message})
