@@ -1,0 +1,83 @@
+Akash Vaghela@DELL-3521 MINGW64 /d/Masai Files/ti_009-akash/unit-4/sprint-4/day-2/assignments/Movie Application (master)
+$ mongoimport --drop --collection movies --file "C:\Users\Akash Vaghela\Desktop\mockData.json" --jsonArray
+2021-04-08T16:02:54.928+0530    connected to: mongodb://localhost/
+2021-04-08T16:02:54.931+0530    dropping: test.movies
+2021-04-08T16:02:55.245+0530    1000 document(s) imported successfully. 0 docume
+nt(s) failed to import.
+
+Akash Vaghela@DELL-3521 MINGW64 /d/Masai Files/ti_009-akash/unit-4/sprint-4/day-2/assignments/Movie Application (master)
+$ mongo
+MongoDB shell version v4.4.4
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("25645dbc-f3aa-49bb-94c9-968be87b2ea5") }
+MongoDB server version: 4.4.4
+---
+The server generated these startup warnings when booting:
+        2021-04-07T14:38:50.836+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+  show dbs
+admin       0.000GBree monitoring, run the following command: db.enableFreeMonitoring()
+assignment  0.000GBtly disable this reminder, run the following command: db.disableFreeMonitoring()
+config      0.000GB
+local       0.000GB
+test        0.000GB
+> show collections
+movies
+> db.movies.find({movie_name: {$eq: "Kids for Cash"}}).pretty()
+
+> db.movies.find({movie_name: {$ne: "Kids for Cash"}}, {movie_name: 1, production_year: 1, _id: 0}).pretty()
+
+> db.movies.find({movie_name: {$ne: "Kids for Cash"}}, {movie_name: 1, production_year: 1, _id: 0}).pretty()
+
+> db.movies.find({movie_name: {$ne: "Kids for Cash"}}, {movie_name: 1, production_year: 1, _id: 0}).pretty()
+
+> db.movies.find({movie_name: {$eq: "Kids for Cash"}}, {movie_name: 1, production_year: 1, _id: 0}).pretty()
+
+> db.movies.find({movie_name: {$ne: "Kids for Cash"}}, {movie_name: 1, production_year: 1, _id: 0}).pretty()
+
+> db.movies.find({budget: {$gte: 15000}}, {movie_name: 1, production_year: 1, _id: 0}).pretty()
+
+> db.movies.find({budget: {$lt: 15000}}, {movie_name: 1, production_year: 1, _id: 0}).pretty()
+
+> db.movies.find({budget: {$lte: 15000}}, {movie_name: 1, production_year: 1, _id: 0}).pretty()
+
+> db.movies.find({$and: [{production_year: {$gt: 2000}}, {budget: {$gt: 10000}}]}, {movie_name: 1, production_year: 1, _id: 0}).pretty()
+
+> db.movies.find({$or: [{production_year: {$eq: 2000}}, {budget: {$eq: 10000}}]}, {movie_name: 1, 
+
+> db.movies.find({$and: [{production_year: {$lt: 2000}}, {budget: {$lt: 10000}}]}, {movie_name: 1, production_year: 1, _id: 0}).pretty()
+
+> db.movies.find({$or: [{production_year: {$eq: 2000}}, {budget: {$eq: 10000}}]}, {movie_name: 1, production_year: 1, _id: 0}).pretty()
+
+> db.movies.find().pretty()
+
+> db.movies.find({production_year: 2000}, {movie_name: 1, production_year: 1, _id: 0}).pretty()
+
+> db.movies.find({production_year: {$in : [2000, 2001]}}, {movie_name: 1, production_year: 1, _id: 0}).pretty()
+
+> db.movies.find().sort({production_year: -1}).sort({movie_name: -1}).pretty()
+
+> db.movies.find().sort({production_year: -1}, {movie_name: -1}).pretty()
+
+
+> db.movies.find().sort({production_year: -1}, {movie_name: -1}).limit(5).pretty()
+
+> db.movies.find().sort({production_year: -1}, {movie_name: -1}).pretty()
+
+> db.movies.find().limit(10)
+
+> db.movies.find({budget: {$lte: 15000}}, {movie_name: 1, production_year: 1, _id: 0}).pretty()
+
+> db.movies.find({}, {movie_name: 1, production_year: 1, _id: 0}).sort({production_year: -1, movie_name: -1}).pretty()
+
+
+> db.movies.updateMany({id:{$in: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}} , {$unset: {movie_genre: ""}})
+{ "acknowledged" : true, "matchedCount" : 10, "modifiedCount" : 9 }
+>

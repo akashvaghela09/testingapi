@@ -1,0 +1,33 @@
+create DATABASE assignment;
+
+SELECT count(*) from mockdata;
+
+SELECT movie_name, production_year from mockdata;
+
+SELECT movie_name, production_year from mockdata where movie_name = "The Fat Spy";
+
+SELECT movie_name, production_year from mockdata where movie_name != "The Fat Spy";
+
+SELECT movie_name, production_year from mockdata where budget > 15000;
+
+SELECT movie_name, production_year from mockdata where budget >= 15000;
+
+SELECT movie_name, production_year from mockdata where budget < 15000;
+
+SELECT movie_name, production_year from mockdata where budget <= 15000;
+
+SELECT movie_name, production_year from mockdata where production_year > 2000 AND budget > 10000;
+
+SELECT movie_name, production_year from mockdata where production_year > 2000 or budget > 10000;
+
+SELECT movie_name, production_year from mockdata where NOT production_year > 2000 AND budget > 10000;
+
+SELECT movie_name, production_year from mockdata where NOT production_year = 2000 or budget = 10000;
+
+SELECT movie_name, production_year from mockdata where production_year BETWEEN 2000 AND 2010;
+
+SELECT movie_name, production_year from mockdata where production_year ORDER BY production_year DESC, movie_name DESC;
+
+SELECT movie_name, production_year from mockdata where production_year ORDER BY production_year DESC, movie_name DESC limit 10, 5;
+
+alter TABLE mockdata DROP column movie_genre;
