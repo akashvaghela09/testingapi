@@ -19,7 +19,13 @@ const movieSchema = new mongoose.Schema({
     budget: Number
 })
 
+const userSchema = new mongoose.Schema({
+    name: String,
+    age: Number
+})
+
 const Movie = mongoose.model("movie", movieSchema);
+const User = mongoose.model("user", userSchema);
 
 // get all movies
 app.get("/movies", async (req, res) => {
@@ -31,11 +37,31 @@ app.get("/movies", async (req, res) => {
     }
 })
 
+// get all User
+app.get("/users", async (req, res) => {
+    try {
+        const users = await User.find()
+        return res.status(200).json({data: users})
+    } catch (err) {
+        return res.status(500).json({message: err.message})
+    }
+})
+
 // post movie
 app.post("/movies", async (req, res) => {
     try {
         const movie = await Movie.create(req.body);
         return res.status(201).json({data: movie})
+    } catch (err) {
+        return res.status(500).json({message: err.message})
+    }
+})
+
+// post User
+app.post("/users", async (req, res) => {
+    try {
+        const users = await User.create(req.body);
+        return res.status(201).json({data: users})
     } catch (err) {
         return res.status(500).json({message: err.message})
     }
@@ -66,6 +92,16 @@ app.delete("/movies/:id", async (req, res) => {
     try {
         const movie = await Movie.findByIdAndDelete(req.params.id).lean().exec()
         return res.status(200).json({data: movie})
+    } catch (err) {
+        return res.status(500).json({message: err.message})
+    }
+})
+
+// delete User
+app.delete("/users/:id", async (req, res) => {
+    try {
+        const users = await User.findByIdAndDelete(req.params.id).lean().exec()
+        return res.status(200).json({data: users})
     } catch (err) {
         return res.status(500).json({message: err.message})
     }
